@@ -269,6 +269,7 @@
     <addaction name="menuEntryCopyAttribute"/>
     <addaction name="separator"/>
     <addaction name="menuEntryTotp"/>
+    <addaction name="actionEntryOpenUrlandAutoType"/>
     <addaction name="actionEntryOpenUrl"/>
     <addaction name="actionEntryAutoType"/>
    </widget>
@@ -537,6 +538,14 @@
    </property>
    <property name="text">
     <string>Perform &amp;Auto-Type</string>
+   </property>
+  </action>
+  <action name="actionEntryOpenUrlandAutoType">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Open &amp;URL &amp;And &amp;AutoType</string>
    </property>
   </action>
   <action name="actionEntryOpenUrl">

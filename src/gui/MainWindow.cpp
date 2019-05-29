@@ -250,8 +250,8 @@ MainWindow::MainWindow()
     m_ui->actionEntryCopyPassword->setShortcut(Qt::CTRL + Qt::Key_C);
     m_ui->actionEntryAutoType->setShortcut(Qt::CTRL + Qt::SHIFT + Qt::Key_V);
     m_ui->actionEntryOpenUrl->setShortcut(Qt::CTRL + Qt::SHIFT + Qt::Key_U);
-    m_ui->actionEntryCopyURL->setShortcut(Qt::CTRL + Qt::Key_U);
-
+     m_ui->actionEntryCopyURL->setShortcut(Qt::CTRL + Qt::Key_U);
+    m_ui->actionEntryOpenUrlandAutoType->setShortcut(Qt::CTRL + Qt::Key_T); // Can be changed
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
     // Qt 5.10 introduced a new "feature" to hide shortcuts in context menus
     // Unfortunately, Qt::AA_DontShowShortcutsInContextMenus is broken, have to manually enable them
@@ -265,6 +265,7 @@ MainWindow::MainWindow()
     m_ui->actionEntryCopyPassword->setShortcutVisibleInContextMenu(true);
     m_ui->actionEntryAutoType->setShortcutVisibleInContextMenu(true);
     m_ui->actionEntryOpenUrl->setShortcutVisibleInContextMenu(true);
+    m_ui->actionEntryOpenUrlAndAutoType->setShrotcutVisibleInContextMenu(true);
     m_ui->actionEntryCopyURL->setShortcutVisibleInContextMenu(true);
 #endif
 
@@ -369,6 +370,7 @@ MainWindow::MainWindow()
     m_actionMultiplexer.connect(m_ui->actionEntryCopyNotes, SIGNAL(triggered()), SLOT(copyNotes()));
     m_actionMultiplexer.connect(m_ui->actionEntryAutoType, SIGNAL(triggered()), SLOT(performAutoType()));
     m_actionMultiplexer.connect(m_ui->actionEntryOpenUrl, SIGNAL(triggered()), SLOT(openUrl()));
+    m_actionMultiplexer.connect(m_ui->actionEntryOpenUrlandAutoType, SIGNAL(triggered()), SLOT(openUrlAndAutoType()));
 
     m_actionMultiplexer.connect(m_ui->actionGroupNew, SIGNAL(triggered()), SLOT(createGroup()));
     m_actionMultiplexer.connect(m_ui->actionGroupEdit, SIGNAL(triggered()), SLOT(switchToGroupEdit()));
@@ -578,6 +580,7 @@ void MainWindow::setMenuActionState(DatabaseWidget::Mode mode)
             m_ui->menuEntryTotp->setEnabled(singleEntrySelected);
             m_ui->actionEntryAutoType->setEnabled(singleEntrySelected);
             m_ui->actionEntryOpenUrl->setEnabled(singleEntrySelected && dbWidget->currentEntryHasUrl());
+            m_ui->actionEntryOpenUrlandAutoType->setEnabled(singleEntrySelected && dbWidget->currentEntryHasUrl() && dbWidget->currentEntryHasPassword()); //FOR DEBUG ONLactionEntryAutoTypeY
             m_ui->actionEntryTotp->setEnabled(singleEntrySelected && dbWidget->currentEntryHasTotp());
             m_ui->actionEntryCopyTotp->setEnabled(singleEntrySelected && dbWidget->currentEntryHasTotp());
             m_ui->actionEntrySetupTotp->setEnabled(singleEntrySelected);

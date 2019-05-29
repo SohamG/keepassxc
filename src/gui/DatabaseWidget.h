@@ -170,6 +170,7 @@ public slots:
     void performAutoType();
     void openUrl();
     void openUrlForEntry(Entry* entry);
+    void openUrlAndAutoType();
     void createGroup();
     void deleteGroup();
     void switchToMainView(bool previousDialogAccepted = false);

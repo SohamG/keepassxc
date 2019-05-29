@@ -703,6 +703,12 @@ void DatabaseWidget::openUrlForEntry(Entry* entry)
     }
 }
 
+void DatabaseWidget::openUrlAndAutoType(){
+    openUrl();
+    QThread::sleep(10); //Seems like an hack 
+    performAutoType();
+}
+
 void DatabaseWidget::createGroup()
 {
     Q_ASSERT(m_groupView->currentGroup());
